@@ -1,0 +1,35 @@
+{
+  "name": "Dev Container(dart)",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "main",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "plugins": "",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions",
+      "username": "root"
+    },
+    "github-cli": "latest"
+  },
+  // container startup script
+  "postCreateCommand": "sh /workspace/.devcontainer/containers/main/startup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.dart-code",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "mhutchie.git-graph"
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.tabSize": 4,
+        "editor.renderWhitespace": "all",
+        "editor.formatOnSave": true,
+        "remote.localPortHost": "allInterfaces",
+        "git.detectSubmodulesLimit": 70,
+        "editor.tabCompletion": "on"
+      }
+    }
+  }
+}
