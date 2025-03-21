@@ -34,7 +34,7 @@
 			"command": "bash",
 			"args": [
 				"-c",
-				"mkdir -p build/release && dart compile exe bin/dart_example.dart -o build/release/dart_example"
+				"mkdir -p build/release && dart compile exe bin/dart_example.dart -o build/release/dart_example.exe"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}/src"
@@ -48,7 +48,7 @@
 			"command": "bash",
 			"args": [
 				"-c",
-				"mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os linux -o build/release/dart_example_aot-snapshot-linux"
+				"mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os linux -o build/release/dart_example_aot-snapshot-linux.aot"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}/src"
@@ -62,7 +62,7 @@
 			"command": "bash",
 			"args": [
 				"-c",
-				"mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os windows -o build/release/dart_example_aot-snapshot-windows"
+				"mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os windows -o build/release/dart_example_aot-snapshot-windows.aot"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}/src"
@@ -76,7 +76,7 @@
 			"command": "bash",
 			"args": [
 				"-c",
-				"mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os macos -o build/release/dart_example_aot-snapshot-macos"
+				"mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os macos -o build/release/dart_example_aot-snapshot-macos.aot"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}/src"
@@ -90,7 +90,7 @@
 			"command": "bash",
 			"args": [
 				"-c",
-				"mkdir -p build/release && dart compile kernel bin/dart_example.dart -o build/release/dart_example_kernel"
+				"mkdir -p build/release && dart compile kernel bin/dart_example.dart -o build/release/dart_example_kernel.dill"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}/src"
