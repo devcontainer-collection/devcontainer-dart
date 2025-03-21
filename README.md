@@ -14,7 +14,7 @@ Wait for the **Docker image to be built** and for the **workspace to open inside
 
 ### 5. Debug the Project  
 Open `/workspace/src/dart_example.dart` and press **F5** to start debugging.  
-The project will be **compiled and executed inside the container**, and the output will be visible in the **Debug Console**.
+The project will be **compiled and executed inside the container**, and the output will be visible in the **Terminal**.
 
 ### 6. Cross-Build the Project  
 ~~Press Cmd + Shift + P → Tasks: Run Task → Build all release targets.~~
@@ -24,8 +24,8 @@ The project will be **compiled and executed inside the container**, and the outp
 
 ## About This DevContainer
 
-This repository provides a DevContainer setup for Dart development, enabling cross-compilation across multiple platforms.  
-The Docker image size is approximately 1.3GB after build due to preinstalled cross-compilation toolchains and dependencies.
+This repository provides a DevContainer setup for Dart development.
+The Docker image size is approximately 1.3GB after build.
 
 > **Note:**  
 > Dart’s self-contained release build via `dart compile exe` does not support cross-compilation. These builds are platform-specific native binaries and must be compiled on their target OS (Linux, macOS, or Windows).
