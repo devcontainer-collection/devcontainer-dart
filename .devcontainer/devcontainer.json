@@ -3,23 +3,13 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "main",
   "workspaceFolder": "/workspace",
-  "features": {
-    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
-      "plugins": "",
-      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions",
-      "username": "root"
-    },
-    "github-cli": "latest"
-  },
   // container startup script
   "postCreateCommand": "sh /workspace/.devcontainer/containers/main/startup.sh",
   "customizations": {
     "vscode": {
       "extensions": [
-        "dart-code.dart-code",
-        "GitHub.copilot",
-        "GitHub.copilot-chat",
-        "mhutchie.git-graph"
+        "dart-code.dart-code"
+        //last extension should not have a comma
       ],
       "settings": {
         "files.eol": "\n",
