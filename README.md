@@ -4,7 +4,8 @@
 Open Visual Studio Code.
 
 ### 2. Open the Project Folder in VSCode  
-Go to **File → Open Folder** and select the folder where the project is cloned.
+Go to **File → Open Folder** and select the folder where the project is cloned.  
+If you see a message saying **"Could not find a Dart SDK. Please download, or, if already downloaded, click 'Locate SDK'."**, just close the message by clicking the **X button**. The Dart SDK is installed inside the container, so you can proceed without any issues.
 
 ### 3. Install VSCode Extension  
 If you see a message at the bottom of VSCode saying **"Do you want to install the recommended extensions from GitHub, Microsoft and others for this repository?"**, click **Install** to install the **Dev Containers** extension along with other recommended extensions.
