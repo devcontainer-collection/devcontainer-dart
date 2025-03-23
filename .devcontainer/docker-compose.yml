@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./containers/main/Dockerfile
-    container_name: main-container
+    # container_name: main-container
     volumes:
       # bind vscode workspace root path to container target
       - type: bind
