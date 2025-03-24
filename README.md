@@ -52,12 +52,33 @@ The project will be **compiled and executed inside the container**, and the outp
 Open the command palette: Press **Ctrl + Shift + P** (macOS: **Cmd + Shift + P**) → **Tasks: Run Task** → **build release: docker runtime native**.  
 This will generate an executable binary that runs natively in the Docker runtime environment.
 
-### 8. Cross-Build the Project
-For macOS and Linux, you can also build the host executable by running the following command in the host terminal:
+### 8. Build Host Self-Contained Executable and Clean SDK/Cache
+
+On macOS and Linux, you can build a self-contained executable for the host platform by running the following command in your host terminal:
+
 ```sh
 sh [WORKSPACE_FOLDER]/toolchains-cross/bin/build-host-executable.sh
 ```
-follow the instructions to clear sdks and cache
+
+This script will:
+
+- Automatically detect your host OS and architecture
+- Download the appropriate Dart SDK if not already present
+- Compile `src/bin/dart_example.dart` into a self-contained executable at:
+
+```
+src/build/release/dart_example-[platform]
+```
+
+To remove previously downloaded SDKs and cached SDK archives without affecting build outputs, run:
+
 ```sh
 sh [WORKSPACE_FOLDER]/toolchains-cross/bin/remove-sdks-and-cache.sh
 ```
+
+> **Note:**  
+> This cleanup only removes downloaded SDKs and zip cache files.  
+> It does **not** delete any previously built executables.
+
+> **Windows is not supported yet** for host-side builds.
+
