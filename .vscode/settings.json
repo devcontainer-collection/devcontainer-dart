@@ -1,0 +1,12 @@
+{
+    "search.exclude": {
+        "**/toolchains-cross/**": true,
+        "**/build/**": true,
+        "**/build-host/**": true
+    },
+    "files.watcherExclude": {
+        "**/toolchains-cross/**": true,
+        "**/build/**": true,
+        "**/build-host/**": true
+    }
+}

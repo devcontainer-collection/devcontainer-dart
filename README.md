@@ -1,3 +1,29 @@
+## About This DevContainer
+
+This repository provides a DevContainer setup for Dart development.  
+The Docker image size is approximately 1.3GB after build.
+
+However, this DevContainer provides runtime-native builds using Docker for the host environment, and also includes pre-configured Tasks for building platform-portable artifacts:
+
+- **aot-snapshot** — Generates an AOT-compiled module that can run on supported platforms using `dartaotruntime`. This allows some level of cross-compatibility as long as the appropriate runtime exists.
+- **kernel** — Produces a portable `.dill` kernel file, which is not tied to a specific OS or CPU architecture, suitable for use across platforms with the Dart SDK installed.
+- **Cross-Build** — Dart does not support self-contained cross-builds. Therefore, only self-contained executables for the **host platform** can be built using the `toolchains-cross` setup.
+
+### Host Platform Compatibility for Self-Contained Executable Builds
+
+This table lists which host environments are currently supported or planned for building self-contained Dart executables using the `toolchains-cross` setup.
+
+| Host OS | Host Arch | Status       |
+|---------|-----------|--------------|
+| Windows | x64       | PLANNED      |
+| Windows | arm64     | PLANNED      |
+| macOS   | x64       | OK           |
+| macOS   | arm64     | NOT TESTED   |
+| Linux   | x64       | NOT TESTED   |
+| Linux   | arm64     | NOT TESTED   |
+
+---
+
 ## Getting Started (with Dev Containers)
 
 ### 1. Launch VSCode  
@@ -26,20 +52,12 @@ The project will be **compiled and executed inside the container**, and the outp
 Open the command palette: Press **Ctrl + Shift + P** (macOS: **Cmd + Shift + P**) → **Tasks: Run Task** → **build release: docker runtime native**.  
 This will generate an executable binary that runs natively in the Docker runtime environment.
 
-### 8. ~~Cross-Build the Project~~
-~~Open the command palette: Press **Ctrl + Shift + P** (macOS: **Cmd + Shift + P**) → **Tasks: Run Task** → **Build all release targets**.~~
-
----
-
-## About This DevContainer
-
-This repository provides a DevContainer setup for Dart development.
-The Docker image size is approximately 1.3GB after build.
-
-> **Note:**  
-> Dart’s self-contained release build via dart compile exe does not support cross-compilation. These builds are platform-specific native binaries and must be compiled on their target OS (Linux, macOS, or Windows).
-
-However, this DevContainer provides runtime-native builds using Docker for the host environment, and also includes pre-configured Tasks for building platform-portable artifacts:
-
-- **aot-snapshot** — Generates an AOT-compiled module that can run on supported platforms using dartaotruntime. This allows some level of cross-compatibility as long as the appropriate runtime exists.
-- **kernel** — Produces a portable .dill kernel file, which is not tied to a specific OS or CPU architecture, suitable for use across platforms with the Dart SDK installed.
+### 8. Cross-Build the Project
+For macOS and Linux, you can also build the host executable by running the following command in the host terminal:
+```sh
+sh [WORKSPACE_FOLDER]/toolchains-cross/bin/build-host-executable.sh
+```
+follow the instructions to clear sdks and cache
+```sh
+sh [WORKSPACE_FOLDER]/toolchains-cross/bin/remove-sdks-and-cache.sh
+```
