@@ -1,13 +1,6 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "Debug Dart Program",
-            "type": "dart",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/bin/dart_example.dart",
-            "cwd": "${workspaceFolder}/src",
-            "console": "terminal"
-        }
+        //
     ]
 }

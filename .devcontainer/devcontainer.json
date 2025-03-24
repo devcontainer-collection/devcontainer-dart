@@ -18,7 +18,111 @@
         "editor.formatOnSave": true,
         "remote.localPortHost": "allInterfaces",
         "git.detectSubmodulesLimit": 70,
-        "editor.tabCompletion": "on"
+        "editor.tabCompletion": "on",
+        //--------------------- launch in devcontainer ---------------------
+        "launch": {
+          "version": "0.2.0",
+          "configurations": [
+            {
+              "name": "Debug Dart Program",
+              "type": "dart",
+              "request": "launch",
+              "program": "${workspaceFolder}/src/bin/dart_example.dart",
+              "cwd": "${workspaceFolder}/src",
+              "console": "terminal"
+            }
+          ]
+        },
+        //===================== launch in devcontainer =====================
+        //--------------------- tasks in devcontainer ---------------------
+        "tasks": {
+          "version": "2.0.0",
+          "tasks": [
+            {
+              "label": "dart clean & pub get",
+              "type": "shell",
+              "command": "bash",
+              "args": [
+                "-c",
+                "rm -rf .dart_tool && dart pub get"
+              ],
+              "options": {
+                "cwd": "${workspaceFolder}/src"
+              },
+              "problemMatcher": []
+            },
+            {
+              "label": "build release: docker runtime native(self-contained executable)",
+              "type": "shell",
+              "command": "bash",
+              "args": [
+                "-c",
+                "mkdir -p build/release && dart compile exe bin/dart_example.dart -o build/release/dart_example.exe"
+              ],
+              "options": {
+                "cwd": "${workspaceFolder}/src"
+              },
+              "problemMatcher": []
+            },
+            {
+              "label": "build release: aot-snapshot linux",
+              "detail": "To run it, use 'dartaotruntime'",
+              "type": "shell",
+              "command": "bash",
+              "args": [
+                "-c",
+                "mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os linux -o build/release/dart_example_aot-snapshot-linux.aot"
+              ],
+              "options": {
+                "cwd": "${workspaceFolder}/src"
+              },
+              "problemMatcher": []
+            },
+            {
+              "label": "build release: aot-snapshot windows",
+              "detail": "To run it, use 'dartaotruntime'",
+              "type": "shell",
+              "command": "bash",
+              "args": [
+                "-c",
+                "mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os windows -o build/release/dart_example_aot-snapshot-windows.aot"
+              ],
+              "options": {
+                "cwd": "${workspaceFolder}/src"
+              },
+              "problemMatcher": []
+            },
+            {
+              "label": "build release: aot-snapshot macos",
+              "detail": "To run it, use 'dartaotruntime'",
+              "type": "shell",
+              "command": "bash",
+              "args": [
+                "-c",
+                "mkdir -p build/release && dart compile aot-snapshot bin/dart_example.dart --target-os macos -o build/release/dart_example_aot-snapshot-macos.aot"
+              ],
+              "options": {
+                "cwd": "${workspaceFolder}/src"
+              },
+              "problemMatcher": []
+            },
+            {
+              "label": "build release: kernel",
+              "detail": "To run it, use 'dart run'",
+              "type": "shell",
+              "command": "bash",
+              "args": [
+                "-c",
+                "mkdir -p build/release && dart compile kernel bin/dart_example.dart -o build/release/dart_example_kernel.dill"
+              ],
+              "options": {
+                "cwd": "${workspaceFolder}/src"
+              },
+              "problemMatcher": []
+            }
+          ]
+        }
+        //===================== tasks in devcontainer =====================
       }
     }
   }

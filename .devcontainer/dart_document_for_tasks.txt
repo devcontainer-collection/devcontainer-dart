@@ -1,0 +1,14 @@
+Available compile subcommands:
+  aot-snapshot   Compile Dart to an AOT snapshot.
+  exe            Compile Dart to a self-contained executable.
+  jit-snapshot   Compile Dart to a JIT snapshot.
+  js             Compile Dart to JavaScript.
+  kernel         Compile Dart to a kernel snapshot.
+  wasm           Compile Dart to a WebAssembly/WasmGC module.
+Available --target-os values:
+  android
+  fuchsia
+  ios
+  linux
+  macos
+  windows
