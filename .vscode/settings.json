@@ -1,4 +1,5 @@
 {
+    //makes vscode do not show errors and warnings in host machine
     "search.exclude": {
         "**/toolchains-cross/**": true,
         "**/build/**": true,
