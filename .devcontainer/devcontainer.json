@@ -3,7 +3,7 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "main",
   "workspaceFolder": "/workspace",
-  // container startup script
+  // This script is executed only once after the image is built
   "postCreateCommand": "sh /workspace/.devcontainer/containers/main/startup.sh",
   "customizations": {
     "vscode": {
@@ -39,12 +39,12 @@
           "version": "2.0.0",
           "tasks": [
             {
-              "label": "dart clean & pub get",
+              "label": "dart clean",
               "type": "shell",
               "command": "bash",
               "args": [
                 "-c",
-                "rm -rf .dart_tool && dart pub get"
+                "rm -rf .dart_tool"
               ],
               "options": {
                 "cwd": "${workspaceFolder}/src"
@@ -52,17 +52,35 @@
               "problemMatcher": []
             },
             {
+              "label": "dart clean & dart pub get",
+              "type": "shell",
+              "command": "bash",
+              "args": [
+                "-c",
+                "dart pub get"
+              ],
+              "options": {
+                "cwd": "${workspaceFolder}/src"
+              },
+              "problemMatcher": [],
+              "dependsOn": "dart clean"
+            },
+            {
               "label": "build release: docker runtime native(self-contained executable)",
               "type": "shell",
               "command": "bash",
               "args": [
                 "-c",
-                "mkdir -p build/release && dart compile exe bin/dart_example.dart -o build/release/dart_example.exe"
+                "mkdir -p build/release && dart compile exe bin/dart_example.dart -o build/release/dart_example"
               ],
               "options": {
                 "cwd": "${workspaceFolder}/src"
               },
-              "problemMatcher": []
+              "problemMatcher": [],
+              "group": {
+                "kind": "build",
+                "isDefault": true
+              }
             },
             {
               "label": "build release: aot-snapshot linux",
@@ -127,3 +145,17 @@
     }
   }
 }
+// Available compile subcommands:
+//   aot-snapshot   Compile Dart to an AOT snapshot.
+//   exe            Compile Dart to a self-contained executable.
+//   jit-snapshot   Compile Dart to a JIT snapshot.
+//   js             Compile Dart to JavaScript.
+//   kernel         Compile Dart to a kernel snapshot.
+//   wasm           Compile Dart to a WebAssembly/WasmGC module.
+// Available --target-os values:
+//   android
+//   fuchsia
+//   ios
+//   linux
+//   macos
+//   windows

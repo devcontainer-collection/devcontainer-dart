@@ -1,8 +1,7 @@
 ## About This DevContainer
 
-This repository provides a DevContainer setup for Dart.
-The Docker image is based on `dart:stable`.
-The Docker image size is approximately 1.3GB after being built.
+This repository provides a DevContainer setup for Dart.  
+The Docker image is based on `dart:stable` and has a size of approximately 1.3GB after being built.
 
 This setup has been tested on macOS-x86_64 and Linux-x86_64 as host platforms, with Linux-x86_64 as the container runtime. Compatibility with other environments is not guaranteed.
 
@@ -24,6 +23,13 @@ The table below lists the host environments currently supported or planned for b
 | macOS   | arm64     | NOT TESTED   |
 | Linux   | x64       | OK           |
 | Linux   | arm64     | NOT TESTED   |
+
+## Support This Project
+
+If you found this project helpful, consider supporting its maintenance and future development with a small donation.  
+You can buy me a coffee via the Ko-fi link below — thank you! ☕✨  
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B21CR05U)
 
 ---
 
@@ -57,27 +63,25 @@ This will generate an executable binary that runs natively in the Docker runtime
 
 ### 8. Build a Host Self-Contained Executable and Clean SDK/Cache
 
-On macOS and Linux, you can build a self-contained executable for the host platform by running the following command in your host terminal:
+On macOS and Linux, you can build a self-contained executable for the host platform by running the following VSCode task:
 
-```sh
-sh [WORKSPACE_FOLDER]/toolchains-cross/bin/build-host-executable.sh
-```
+1. Open the command palette: Press **Ctrl + Shift + P** (macOS: **Cmd + Shift + P**) → **Tasks: Run Task**.
+2. Select **[HOST only] Build Host Executable** from the list of tasks.
 
-This script will:
+This task will:
 
-- Automatically detect your host OS and architecture
-- Download the appropriate Dart SDK if not already present
+- Automatically detect your host OS and architecture.
+- Download the appropriate Dart SDK if not already present.
 - Compile `[WORKSPACE_FOLDER]/src/bin/dart_example.dart` into a self-contained executable at:
 
 ```
 [WORKSPACE_FOLDER]/src/build/release/dart_example-[platform]
 ```
 
-To remove previously downloaded SDKs and cached SDK archives without affecting build outputs, run:
+To remove previously downloaded SDKs and cached SDK archives without affecting build outputs, run the following VSCode task:
 
-```sh
-sh [WORKSPACE_FOLDER]/toolchains-cross/bin/remove-sdks-and-cache.sh
-```
+1. Open the command palette: Press **Ctrl + Shift + P** (macOS: **Cmd + Shift + P**) → **Tasks: Run Task**.
+2. Select **[HOST only] Remove SDKs and Cache** from the list of tasks.
 
 > **Note:**  
 > This cleanup only removes downloaded SDKs and zip cache files.  

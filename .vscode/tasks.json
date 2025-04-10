@@ -1,6 +1,51 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        //
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "[HOST only] Build Host Executable",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "./bin/build-host-executable.sh"
+      ],
+      "windows": {
+        //   "command": "cmd",
+        //   "args": ["/c", "bin\\build-host-executable.bat"]
+        "command": "cmd",
+        "args": [
+          "/c",
+          "echo 'Windows build not supported yet' && pause"
+        ]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/toolchains-cross"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "[HOST only] Remove SDKs and Cache",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "./bin/remove-sdks-and-cache.sh"
+      ],
+      "windows": {
+        //   "command": "cmd",
+        //   "args": ["/c", "bin\\remove-sdks-and-cache.bat"]
+        "command": "cmd",
+        "args": [
+          "/c",
+          "echo 'Remove SDKs and Cache not supported yet' && pause"
+        ]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/toolchains-cross"
+      },
+      "problemMatcher": []
+    }
+  ]
 }

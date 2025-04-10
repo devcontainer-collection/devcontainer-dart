@@ -1,7 +1,18 @@
 #!/bin/bash
+
 set -e
 
-echo "[startup.sh] Running: dart pub get"
+SCRIPT_NAME=$(basename "$0")
+
+trap 'echo "Exit $SCRIPT_NAME"' EXIT
+echo "Running $SCRIPT_NAME..."
+
+if [ ! -f "/.dockerenv" ]; then
+  echo "$SCRIPT_NAME: This script is only for use in a devcontainer."
+  exit 0
+fi
+
+echo "Running: dart pub get"
 cd /workspace/src/
 dart pub get
 
